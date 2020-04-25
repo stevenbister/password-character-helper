@@ -6,7 +6,15 @@
   <title>Document</title>
 </head>
 <body>
-  <div id="app"></div>
+  <div id="app">
+    <form id="password-checker">
+      <label for="password">Enter the password you want to check</label>
+      <input type="password" name="password" id="password" value="">
+      <label for="letters">Which letters do you want? <span>Separate values with a comma</span></label>
+      <input type="text" name="letters" id="letters" value="" placeholder="1, 3, 7">
+      <button>Go</button>
+    </form>
+  </div>
   <script src="index.js"></script>
 </body>
 </html>
