@@ -11,8 +11,8 @@ const strToArr = str => {
   }
 
   arr.push(str);
-
   return arr;
+ 
 };
 
 export default strToArr;
