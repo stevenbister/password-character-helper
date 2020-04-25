@@ -10,7 +10,6 @@
     "prettier": "^1.19.1"
   },
   "scripts": {
-    // Change the parcel.js output so we can host on GH pages
     "dev": "parcel index.html --out-dir docs",
     "build": "parcel build index.html --out-dir docs --public-url ./"
   }
