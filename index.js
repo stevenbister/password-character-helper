@@ -1,4 +1,5 @@
 import strToArr from './handlers/handleStringToArray';
+import getLetters from './handlers/handleGetLetters';
 
 const app = document.querySelector('#app');
 const form = document.querySelector('#password-checker');
@@ -11,11 +12,10 @@ let pwdLength;
 const countLetters = input => input.value.length;
 password.addEventListener('keyup', () => (pwdLength = countLetters(password)));
 
-// Check the positions entered
-const getLetters = (word, position) => position.map(i => word.split('')[i]);
-
 form.addEventListener('submit', e => {
   e.preventDefault();
+  
+  console.log(getLetters(password.value))
  
   const div = document.createElement('div');
   div.classList.add('output');
