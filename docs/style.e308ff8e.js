@@ -117,89 +117,79 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"handlers/handleStringToArray.js":[function(require,module,exports) {
-"use strict";
+})({"../../../../Users/BisterS/AppData/Local/Yarn/Data/global/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+var bundleURL = null;
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-// Turn string into an array, broken on the comma
-var strToArr = function strToArr(str) {
-  // Init an empty array ready to store the letters
-  var arr = []; // If the string contains a comma split the sting into an array
-  // Else push the number into an array on it's own
-
-  var regex = /,/;
-
-  if (regex.test(str)) {
-    return str.replace(/\s/g, '').split(',');
+function getBundleURLCached() {
+  if (!bundleURL) {
+    bundleURL = getBundleURL();
   }
 
-  arr.push(str);
-  return arr;
-};
+  return bundleURL;
+}
 
-var _default = strToArr;
-exports.default = _default;
-},{}],"handlers/handleGetLetters.js":[function(require,module,exports) {
-"use strict";
+function getBundleURL() {
+  // Attempt to find the URL of the current script and use that as the base URL
+  try {
+    throw new Error();
+  } catch (err) {
+    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-// Check the positions entered
-var getLetters = function getLetters(word, position) {
-  return position.map(function (i) {
-    return word.split('')[i];
-  });
-};
-
-var _default = getLetters;
-exports.default = _default;
-},{}],"index.js":[function(require,module,exports) {
-"use strict";
-
-var _handleStringToArray = _interopRequireDefault(require("./handlers/handleStringToArray"));
-
-var _handleGetLetters = _interopRequireDefault(require("./handlers/handleGetLetters"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var app = document.querySelector('#app');
-var form = document.querySelector('#password-checker');
-var output = document.querySelector('.output');
-var password = form.password,
-    letters = form.letters;
-var pwdLength; // Count the number of letters in the password
-
-var countLetters = function countLetters(input) {
-  return input.value.length;
-}; // Check if number is greater than password
-
-
-var isBiggerThanPwd = function isBiggerThanPwd(x) {
-  return x > pwdLength;
-}; // Count the number of letters in the password
-
-
-password.addEventListener('keyup', function () {
-  return pwdLength = countLetters(password);
-});
-form.addEventListener('submit', function (e) {
-  e.preventDefault(); // the .some method checks our array to see if at least one element passes the test
-  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some 
-
-  if ((0, _handleStringToArray.default)(letters.value).some(isBiggerThanPwd)) {
-    output.innerHTML = "<p>There aren't that many letters in your password \uD83E\uDD26</p>";
-  } else {
-    output.innerHTML = "".concat((0, _handleGetLetters.default)(password.value, (0, _handleStringToArray.default)(letters.value)));
+    if (matches) {
+      return getBaseURL(matches[0]);
+    }
   }
-});
-},{"./handlers/handleStringToArray":"handlers/handleStringToArray.js","./handlers/handleGetLetters":"handlers/handleGetLetters.js"}],"../../../../Users/BisterS/AppData/Local/Yarn/Data/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+
+  return '/';
+}
+
+function getBaseURL(url) {
+  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)\/[^/]+$/, '$1') + '/';
+}
+
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+},{}],"../../../../Users/BisterS/AppData/Local/Yarn/Data/global/node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+var bundle = require('./bundle-url');
+
+function updateLink(link) {
+  var newLink = link.cloneNode();
+
+  newLink.onload = function () {
+    link.remove();
+  };
+
+  newLink.href = link.href.split('?')[0] + '?' + Date.now();
+  link.parentNode.insertBefore(newLink, link.nextSibling);
+}
+
+var cssTimeout = null;
+
+function reloadCSS() {
+  if (cssTimeout) {
+    return;
+  }
+
+  cssTimeout = setTimeout(function () {
+    var links = document.querySelectorAll('link[rel="stylesheet"]');
+
+    for (var i = 0; i < links.length; i++) {
+      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
+        updateLink(links[i]);
+      }
+    }
+
+    cssTimeout = null;
+  }, 50);
+}
+
+module.exports = reloadCSS;
+},{"./bundle-url":"../../../../Users/BisterS/AppData/Local/Yarn/Data/global/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"style.css":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../../../../Users/BisterS/AppData/Local/Yarn/Data/global/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../../../../Users/BisterS/AppData/Local/Yarn/Data/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -403,5 +393,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../../../../Users/BisterS/AppData/Local/Yarn/Data/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.js"], null)
-//# sourceMappingURL=/password-character-helper.e31bb0bc.js.map
+},{}]},{},["../../../../Users/BisterS/AppData/Local/Yarn/Data/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js"], null)
+//# sourceMappingURL=/style.e308ff8e.js.map

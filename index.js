@@ -26,6 +26,6 @@ form.addEventListener('submit', e => {
   if (strToArr(letters.value).some(isBiggerThanPwd)) {
     output.innerHTML = `<p>There aren't that many letters in your password 🤦</p>`;
   } else {
-    output.innerHTML = `<p>${getLetters(password.value, strToArr(letters.value))}</p>`;
+    output.innerHTML = `${getLetters(password.value, strToArr(letters.value))}`;
   }
 });
