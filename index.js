@@ -3,6 +3,7 @@ import getLetters from './handlers/handleGetLetters';
 
 const app = document.querySelector('#app');
 const form = document.querySelector('#password-checker');
+const output = document.querySelector('.output');
 const { password, letters } = form;
 let pwdLength;
 
@@ -19,9 +20,6 @@ password.addEventListener('keyup', () => pwdLength = countLetters(password));
 
 form.addEventListener('submit', e => {
   e.preventDefault();
-
-  const output = document.createElement('div');
-  output.classList.add('output');
   
   // the .some method checks our array to see if at least one element passes the test
   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some 
@@ -30,7 +28,4 @@ form.addEventListener('submit', e => {
   } else {
     output.innerHTML = `<p>${getLetters(password.value, strToArr(letters.value))}</p>`;
   }
-
-  app.appendChild(output);
-
 });

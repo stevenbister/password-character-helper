@@ -171,6 +171,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var app = document.querySelector('#app');
 var form = document.querySelector('#password-checker');
+var output = document.querySelector('.output');
 var password = form.password,
     letters = form.letters;
 var pwdLength; // Count the number of letters in the password
@@ -189,9 +190,7 @@ password.addEventListener('keyup', function () {
   return pwdLength = countLetters(password);
 });
 form.addEventListener('submit', function (e) {
-  e.preventDefault();
-  var output = document.createElement('div');
-  output.classList.add('output'); // the .some method checks our array to see if at least one element passes the test
+  e.preventDefault(); // the .some method checks our array to see if at least one element passes the test
   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some 
 
   if ((0, _handleStringToArray.default)(letters.value).some(isBiggerThanPwd)) {
@@ -199,8 +198,6 @@ form.addEventListener('submit', function (e) {
   } else {
     output.innerHTML = "<p>".concat((0, _handleGetLetters.default)(password.value, (0, _handleStringToArray.default)(letters.value)), "</p>");
   }
-
-  app.appendChild(output);
 });
 },{"./handlers/handleStringToArray":"handlers/handleStringToArray.js","./handlers/handleGetLetters":"handlers/handleGetLetters.js"}],"../../../../Users/BisterS/AppData/Local/Yarn/Data/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
