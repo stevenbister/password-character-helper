@@ -153,8 +153,8 @@ exports.default = void 0;
 
 // Check the positions entered
 var getLetters = function getLetters(word, position) {
-  return position.map(function (i) {
-    return word.split('')[i];
+  return position.map(function (item) {
+    return "<span class=\"output-letter\">".concat(word.charAt(item - 1), "</span>");
   });
 };
 
@@ -196,7 +196,7 @@ form.addEventListener('submit', function (e) {
   if ((0, _handleStringToArray.default)(letters.value).some(isBiggerThanPwd)) {
     output.innerHTML = "<p>There aren't that many letters in your password \uD83E\uDD26</p>";
   } else {
-    output.innerHTML = "".concat((0, _handleGetLetters.default)(password.value, (0, _handleStringToArray.default)(letters.value)));
+    output.innerHTML = (0, _handleGetLetters.default)(password.value, (0, _handleStringToArray.default)(letters.value)).join('');
   }
 });
 },{"./handlers/handleStringToArray":"handlers/handleStringToArray.js","./handlers/handleGetLetters":"handlers/handleGetLetters.js"}],"../../../../Users/BisterS/AppData/Local/Yarn/Data/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
@@ -227,7 +227,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51370" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62915" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
