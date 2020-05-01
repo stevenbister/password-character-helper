@@ -1,6 +1,5 @@
 import strToArr from './handlers/handleStringToArray';
 import getLetters from './handlers/handleGetLetters';
-import { countLetters, checkLetters } from './handlers/handleCheckPasswordLength';
 
 const app = document.querySelector('#app');
 const form = document.querySelector('#password-checker');
@@ -8,15 +7,30 @@ const { password, letters } = form;
 let pwdLength;
 
 // Count the number of letters in the password
+const countLetters = input => input.value.length;
+
+// Check if number is greater than password
+const isBiggerThanPwd = (x) => {
+  return x > pwdLength;
+}
+
+// Count the number of letters in the password
 password.addEventListener('keyup', () => pwdLength = countLetters(password));
 
 form.addEventListener('submit', e => {
   e.preventDefault();
-  checkLetters(letters, pwdLength);
 
-  const div = document.createElement('div');
-  div.classList.add('output');
-  div.innerHTML = `<p>${getLetters(password.value, strToArr(letters.value))}</p>`;
-  app.appendChild(div);
+  const output = document.createElement('div');
+  output.classList.add('output');
+  
+  // the .some method checks our array to see if at least one element passes the test
+  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some 
+  if (strToArr(letters.value).some(isBiggerThanPwd)) {
+    output.innerHTML = `<p>There aren't that many letters in your password 🤦</p>`;
+  } else {
+    output.innerHTML = `<p>${getLetters(password.value, strToArr(letters.value))}</p>`;
+  }
+
+  app.appendChild(output);
 
 });
