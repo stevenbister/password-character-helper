@@ -142,7 +142,7 @@ button:hover {
   text-align: center;
 }
 
-@media only screen and (min-width: 360px) {
+@media only screen and (min-width: 460px) {
   .app__body {
     padding: 4rem 2rem;
   }
