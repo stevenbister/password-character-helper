@@ -6,11 +6,14 @@ let characters = [];
 
 const passwordContainer = document.getElementById('passwordContainer');
 const formFieldset = document.querySelector('#characterPicker fieldset');
-passwordContainer.addEventListener('input', e => {
+
+passwordContainer.addEventListener('input', (e) => {
   characters = pushInputTextToArray(e);
 
   createCheckbox({
     array: characters,
     container: formFieldset,
-  })
+  });
 });
+
+// TODO: Remove last checkbox element on backspace

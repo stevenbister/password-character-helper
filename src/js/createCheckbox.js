@@ -1,19 +1,14 @@
 function createCheckbox({ array, container }) {
-  if (!Array.isArray(array)) throw new TypeError;
+  if (!Array.isArray(array)) throw new TypeError();
   if (!container) throw new Error('No container for your checkboxes defined');
 
-  console.log({array, container});
-
   const label = document.createElement('label');
-  const checkbox = document.createElement('checkbox');
 
-  array.forEach( (item, i) => {
-    // container.innerHTML += `
-    // <label>
-    //   ${i}<input type="checkbox" name="${i}" id="${i}">
-    // </label>
-    // `
-  })
+  return array.forEach((item, i) => {
+    label.innerHTML = `${i+1} <input type="checkbox" name="${i+1}" id="${i+1}">`;
+
+    return container.append(label)
+  });
 }
 
 export default createCheckbox;
