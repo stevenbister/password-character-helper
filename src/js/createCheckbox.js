@@ -5,9 +5,9 @@ function createCheckbox({ array, container }) {
   const label = document.createElement('label');
 
   return array.forEach((item, i) => {
-    label.innerHTML = `${i+1} <input type="checkbox" name="${i+1}" id="${i+1}">`;
+    label.innerHTML += `${i+1} <input type="checkbox" name="${i+1}" id="${i+1}">`;
 
-    return container.append(label)
+    return container.append(label);
   });
 }
 
