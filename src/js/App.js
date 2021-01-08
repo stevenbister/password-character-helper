@@ -8,12 +8,18 @@ const passwordContainer = document.getElementById('passwordContainer');
 const formFieldset = document.querySelector('#characterPicker fieldset');
 
 passwordContainer.addEventListener('input', (e) => {
-  characters = pushInputTextToArray(e);
+  // Clear the checkbox wrapper so we start with a blank slate on each input.
+  formFieldset.innerHTML = '';
 
-  createCheckbox({
-    array: characters,
-    container: formFieldset,
-  });
+  // Then add the checkboxes back in with any new or removed taken into account.
+  const appendCheckboxes = () => {
+    characters = pushInputTextToArray(e);
+
+    createCheckbox({
+      array: characters,
+      container: formFieldset,
+    });
+  }
+
+  return appendCheckboxes();
 });
-
-// TODO: Remove last checkbox element on backspace
