@@ -5,11 +5,11 @@ import createCheckbox from './createCheckbox';
 let characters = [];
 
 const passwordContainer = document.getElementById('passwordContainer');
-const formFieldset = document.querySelector('#characterPicker fieldset');
+const checkboxContainer = document.querySelector('#characterPicker fieldset > .checkboxes');
 
 passwordContainer.addEventListener('input', (e) => {
   // Clear the checkbox wrapper so we start with a blank slate on each input.
-  formFieldset.innerHTML = '';
+  checkboxContainer.innerHTML = '';
 
   // Then add the checkboxes back in with any new or removed taken into account.
   const appendCheckboxes = () => {
@@ -17,7 +17,7 @@ passwordContainer.addEventListener('input', (e) => {
 
     createCheckbox({
       array: characters,
-      container: formFieldset,
+      container: checkboxContainer,
     });
   }
 
