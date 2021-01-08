@@ -1,34 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./src/scss/style.scss">
-  <title>Password Checker</title>
-</head>
-<body>
-  <main id="app">
-    <div contenteditable="true">
-      Type your password here to start
-    </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./src/scss/style.scss" />
+    <title>Password Checker</title>
+  </head>
+  <body>
+    <main id="app">
+      <form id="characterPicker">
+        <input type="password" name="Password" id="passwordContainer" />
+        <fieldset>
+          <legend>Select which chatacters you want to show</legend>
+          <div class="checkboxes"></div>
+        </fieldset>
+      </form>
+    </main>
 
-    <form id="character-picker">
-      <fieldset>
-        <legend>Select which chatacters you want to show</legend>
-        <!-- TODO: Dynamically create these -->
-        <label>
-          1<input type="checkbox" name="1" id="1">
-        </label>
-        <label>
-          2<input type="checkbox" name="2" id="2">
-        </label>
-        <label>
-          3<input type="checkbox" name="3" id="3">
-        </label>
-      </fieldset>
-    </form>
-  </main>
-
-  <script src="./src/js/App.js"></script>
-</body>
+    <script src="./src/js/App.js"></script>
+  </body>
 </html>
