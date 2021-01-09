@@ -1,0 +1,8 @@
+input[type='password'] {
+  padding: rem-calc(8) rem-calc(24);
+  border: none;
+  background: var(--primary-input-color);
+  border-radius: rem-calc(10);
+  font-size: rem-calc(28);
+  line-height: 1.2;
+}
