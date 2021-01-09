@@ -7,7 +7,7 @@ let characters = [];
 
 const passwordContainer = document.getElementById('passwordContainer');
 const checkboxContainer = document.querySelector(
-  '#characterPicker fieldset > .checkboxes'
+  '#characterPicker #fieldset > .checkboxes'
 );
 const output = document.getElementById('output');
 
