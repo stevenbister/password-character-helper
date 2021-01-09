@@ -1,3 +1,5 @@
+// ? Refactor these into one function?
+
 function createCheckbox({ array, container }) {
   if (!Array.isArray(array)) throw new TypeError();
   if (!container) throw new Error('No container for your checkboxes defined');
