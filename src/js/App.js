@@ -1,25 +1,63 @@
 import pushInputTextToArray from './utils/arrayHandlers';
-import createCheckbox from './createCheckbox';
+import clearElement from './utils/clearElement';
+import { createCheckbox, createCharacterContainer } from './createElements';
 
 // Init array to store the password's characters
 let characters = [];
 
 const passwordContainer = document.getElementById('passwordContainer');
-const checkboxContainer = document.querySelector('#characterPicker fieldset > .checkboxes');
+const checkboxContainer = document.querySelector(
+  '#characterPicker fieldset > .checkboxes'
+);
+const output = document.getElementById('output');
 
 passwordContainer.addEventListener('input', (e) => {
   // Clear the checkbox wrapper so we start with a blank slate on each input.
-  checkboxContainer.innerHTML = '';
+  clearElement(checkboxContainer);
+  clearElement(output);
 
   // Then add the checkboxes back in with any new or removed taken into account.
-  const appendCheckboxes = () => {
+  const appendElements = () => {
     characters = pushInputTextToArray(e);
 
+    // Create and append the checkboxes.
     createCheckbox({
       array: characters,
       container: checkboxContainer,
     });
-  }
 
-  return appendCheckboxes();
+    // Create and append the character containers.
+    createCharacterContainer({
+      array: characters,
+      container: output,
+    });
+  };
+
+  return appendElements();
+});
+
+/**
+ * Use event delegation to handle the event listener.
+ * Because the checkboxes are dynamically created we can't target them with the element.addEventListener
+ * unless we add a new event listener each time we create one.
+ */
+document.addEventListener('change', (e) => {
+  if (e.target.matches('input[type="checkbox"]')) {
+    const id = e.target.id;
+
+    // Compare array index with checkbox ID
+    const showCharacters = () => {
+      return output.childNodes.forEach((wrapper, i) => {
+        if (id == i) {
+          if (e.target.checked) {
+            wrapper.innerText = characters[i];
+          } else {
+            if (wrapper.dataset.index == [i]) wrapper.innerText = '';
+          }
+        }
+      });
+    };
+
+    return showCharacters();
+  }
 });
