@@ -1,8 +1,55 @@
+form {
+  --input-radius: #{rem-calc(10)};
+}
+
 input[type='password'] {
   padding: rem-calc(8) rem-calc(24);
   border: none;
   background: var(--primary-input-color);
-  border-radius: rem-calc(10);
+  border-radius: var(--input-radius);
   font-size: rem-calc(28);
   line-height: 1.2;
+}
+
+.fieldset__checkboxes {
+  @include flex-column(reverse);
+}
+
+.legend {
+  text-align: center;
+}
+
+.checkboxes {
+  @include flex-row($wrap: wrap);
+}
+
+// Custom checkboxes
+.checkbox {
+  display: grid;
+  padding: rem-calc(3) 0;
+  margin: rem-calc(3);
+  background: var(--primary-input-color);
+  border-radius: var(--input-radius);
+  grid-template-areas: 'checkbox';
+  @include grid-rows(1);
+
+  &:hover,
+  &:focus,
+  &.checked {
+    background: var(--primary-input-color-dark);
+    color: var(--primary-input-color);
+  }
+
+  > * {
+    cursor: pointer;
+    grid-area: checkbox;
+    text-align: center;
+  }
+
+  // Hide the default input
+  input {
+    width: 1em;
+    height: 1em;
+    opacity: 0;
+  }
 }
