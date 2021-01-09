@@ -1,5 +1,6 @@
 import pushInputTextToArray from './utils/arrayHandlers';
-import createCheckbox from './createCheckbox';
+import clearElement from './utils/clearElement';
+import { createCheckbox, createCharacterContainer } from './createElements';
 
 // Init array to store the password's characters
 let characters = [];
@@ -12,19 +13,27 @@ const output = document.getElementById('output');
 
 passwordContainer.addEventListener('input', (e) => {
   // Clear the checkbox wrapper so we start with a blank slate on each input.
-  checkboxContainer.innerHTML = '';
+  clearElement(checkboxContainer);
+  clearElement(output);
 
   // Then add the checkboxes back in with any new or removed taken into account.
-  const appendCheckboxes = () => {
+  const appendElements = () => {
     characters = pushInputTextToArray(e);
 
+    // Create and append the checkboxes.
     createCheckbox({
       array: characters,
       container: checkboxContainer,
     });
+
+    // Create and append the character containers.
+    createCharacterContainer({
+      array: characters,
+      container: output,
+    });
   };
 
-  return appendCheckboxes();
+  return appendElements();
 });
 
 /**
@@ -38,19 +47,15 @@ document.addEventListener('change', (e) => {
 
     // Compare array index with checkbox ID
     const showCharacters = () => {
-
-      return characters.forEach((character, i) => {
-        if (id == i + 1) {
+      return output.childNodes.forEach((wrapper, i) => {
+        if (id == i) {
           if (e.target.checked) {
-            output.innerHTML += `<p>${character}</p>`;
-            console.log({character, i});
+            wrapper.innerText = characters[i];
           } else {
-            // TODO: Not quite working - this is checking agains the i of the loop rather than the i of the nodelist
-              output.removeChild(output.childNodes[i]);
+            if (wrapper.dataset.index == [i]) wrapper.innerText = '';
           }
         }
       });
-
     };
 
     return showCharacters();
