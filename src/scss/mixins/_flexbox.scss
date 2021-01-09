@@ -1,0 +1,31 @@
+/// Sets up a flexible row
+///
+/// @example
+///   @include flex-row();
+///
+/// @param {string} $direction
+///   Accepts an optional 'reverse' value and will change the flow direction
+@mixin flex-row($direction: null, $wrap: nowrap) {
+  display: flex;
+  @if $direction == reverse {
+    flex-flow: row-reverse $wrap;
+  } @else {
+    flex-flow: row $wrap;
+  }
+}
+
+/// Sets up a flexible column
+///
+/// @example
+///   @include flex-column();
+///
+/// @param {string} $direction
+///   Accepts an optional 'reverse' value and will change the flow direction
+@mixin flex-column($direction: null, $wrap: nowrap) {
+  display: flex;
+  @if $direction == reverse {
+    flex-flow: column-reverse $wrap;
+  } @else {
+    flex-flow: column $wrap;
+  }
+}

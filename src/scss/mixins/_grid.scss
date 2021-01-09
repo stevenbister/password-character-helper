@@ -1,0 +1,93 @@
+/// Sets up grid columns
+///
+/// @example
+///   @include grid-cols(4);
+///
+/// @param {number | string} $cols
+///   Accepts a number, or string parameter of 'auto' to set the columns of the grid.
+@mixin grid-cols($cols) {
+  @if type-of($cols) == number {
+    grid-template-columns: repeat($cols, minmax(0, 1fr));
+  } @else if type-of($cols) == string and $cols == auto {
+    grid-auto-flow: column;
+  } @else {
+    @error 'Please pass either a number or the string \'auto\'';
+  }
+}
+
+/// Sets up where the child element will start on the grid column
+///
+/// @example
+///   @include col-start(2);
+///
+/// @param {number | string} $col
+///   Accepts a number, or string parameter of 'auto' to set which column the element starts on within the grid.
+@mixin col-start($col) {
+  @if type-of($col) == number or type-of($col) == string and $col == auto {
+    grid-column-start: $col;
+  } @else {
+    @error 'Please pass either a number or the string \'auto\'';
+  }
+}
+
+/// Sets up where the child element will start on the grid column
+///
+/// @example
+///   @include col-end(3);
+///
+/// @param {number | string} $cols
+///   Accepts a number, or string parameter of 'auto' to set which column the element ends on within the grid.
+@mixin col-end($col) {
+  @if type-of($col) == number or type-of($col) == string and $col == auto {
+    grid-column-end: $col;
+  } @else {
+    @error 'Please pass either a number or the string \'auto\'';
+  }
+}
+
+/// Sets up grid rows on the parent element
+///
+/// @example
+///   @include grid-rows(auto);
+///
+/// @param {number | string} $rows
+///   Accepts a number, or string parameter of 'auto' to set the rows in the grid.
+@mixin grid-rows($rows) {
+  @if type-of($rows) == number {
+    grid-template-rows: repeat($rows, minmax(0, 1fr));
+  } @else if type-of($rows) == string and $rows == auto {
+    grid-auto-flow: row;
+  } @else {
+    @error 'Please pass either a number or the string \'auto\'';
+  }
+}
+
+/// Sets up where the child element will start on the grid row
+///
+/// @example
+///   @include row-start(2);
+///
+/// @param {number | string} $row
+///   Accepts a number, or string parameter of 'auto' to set which row the element starts on within the grid.
+@mixin row-start($row) {
+  @if type-of($row) == number or type-of($row) == string and $row == auto {
+    grid-row-start: $row;
+  } @else {
+    @error 'Please pass either a number or the string \'auto\'';
+  }
+}
+
+/// Sets up where the child element will start on the grid row
+///
+/// @example
+///   @include row-end(3);
+///
+/// @param {number | string} $row
+///   Accepts a number, or string parameter of 'auto' to set which row the element ends on within the grid.
+@mixin row-end($row) {
+  @if type-of($row) == number or type-of($row) == string and $row == auto {
+    grid-row-end: $row;
+  } @else {
+    @error 'Please pass either a number or the string \'auto\'';
+  }
+}

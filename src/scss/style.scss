@@ -1,2 +1,6 @@
 // Reset styles
 @import '../../node_modules/modern-css-reset/dist/reset.min.css';
+
+// Mixins
+@import './mixins/flexbox';
+@import './mixins/grid';
