@@ -12,7 +12,6 @@ function createCharacterContainer({ array, container }) {
   if (!container) throw new Error('No container for your checkboxes defined');
 
   return array.forEach((item, i) => (
-    // TODO: Remove the ${item}, only here for debugging for now
     container.innerHTML += `<span data-index="${i}"></span>`
   ))
 }
