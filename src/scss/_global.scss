@@ -1,0 +1,20 @@
+@include font-face(
+  $name: 'Roboto',
+  $path: '../fonts/Roboto/Roboto-Regular.ttf'
+);
+
+:root {
+  --primary-input-color: #e5e5e5;
+  --primary-input-color-dark: #333;
+}
+
+body {
+  align-items: center;
+  justify-content: center;
+  @include flex-column;
+  @include font-family($name: 'Roboto');
+}
+
+main {
+  max-width: 100%;
+}

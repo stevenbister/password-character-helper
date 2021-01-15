@@ -7,14 +7,26 @@
     <title>Password Checker</title>
   </head>
   <body>
-    <main id="app">
-      <div id="output"></div>
-      <form id="characterPicker">
-        <input type="password" name="Password" id="passwordContainer" />
-        <fieldset>
-          <legend>Select which chatacters you want to show</legend>
-          <div class="checkboxes"></div>
-        </fieldset>
+    <main id="app" class="container stack text--center">
+      <div id="output" class="output"></div>
+      <form id="characterPicker" class="form stack">
+        <input
+          type="password"
+          name="Password"
+          id="passwordContainer"
+          class="text--center"
+        />
+        <div
+          id="fieldset"
+          class="fieldset__checkboxes"
+          role="group"
+          aria-labelledby="legend"
+        >
+          <div id="legend" class="legend">
+            Select which chatacters you want to show
+          </div>
+          <div class="checkboxes checkboxes--center"></div>
+        </div>
       </form>
     </main>
 

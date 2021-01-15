@@ -7,7 +7,7 @@ let characters = [];
 
 const passwordContainer = document.getElementById('passwordContainer');
 const checkboxContainer = document.querySelector(
-  '#characterPicker fieldset > .checkboxes'
+  '#characterPicker #fieldset > .checkboxes'
 );
 const output = document.getElementById('output');
 
@@ -44,6 +44,7 @@ passwordContainer.addEventListener('input', (e) => {
 document.addEventListener('change', (e) => {
   if (e.target.matches('input[type="checkbox"]')) {
     const id = e.target.id;
+    const checkboxParent = e.target.parentElement;
 
     // Compare array index with checkbox ID
     const showCharacters = () => {
@@ -51,8 +52,12 @@ document.addEventListener('change', (e) => {
         if (id == i) {
           if (e.target.checked) {
             wrapper.innerText = characters[i];
+
+            checkboxParent.classList.add('checked');
           } else {
             if (wrapper.dataset.index == [i]) wrapper.innerText = '';
+
+            checkboxParent.classList.remove('checked');
           }
         }
       });

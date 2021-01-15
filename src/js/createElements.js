@@ -5,7 +5,7 @@ function createCheckbox({ array, container }) {
   if (!container) throw new Error('No container for your checkboxes defined');
 
   return array.forEach((item, i) => (
-    container.innerHTML += `<label>${i+1} <input type="checkbox" name="${i}" id="${i}"></label>`)
+    container.innerHTML += `<label class="checkbox"><span>${i+1}</span><input type="checkbox" name="${i}" id="${i}"></label>`)
   );
 }
 

@@ -1,0 +1,15 @@
+.stack {
+  --space: #{rem-calc(25)};
+
+  justify-content: flex-start;
+  @include flex-column;
+}
+
+.stack > * {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.stack > * + * {
+  margin-top: var(--space);
+}
