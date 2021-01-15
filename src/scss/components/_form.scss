@@ -17,11 +17,14 @@ input[type='password'] {
 
 .legend {
   margin-top: 0.5em;
-  text-align: center;
 }
 
 .checkboxes {
   @include flex-row($wrap: wrap);
+}
+
+.checkboxes--center {
+  justify-content: center;
 }
 
 // Custom checkboxes
