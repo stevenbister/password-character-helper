@@ -37,11 +37,21 @@ input[type='password'] {
   grid-template-areas: 'checkbox';
   @include grid-rows(1);
 
+  transition: all 0.2s ease-in-out;
+
   &:hover,
   &:focus,
   &.checked {
     background: var(--primary-input-color-dark);
     color: var(--primary-input-color);
+  }
+
+  &.checked {
+    &:hover,
+    &:focus {
+      background: var(--primary-input-color);
+      color: initial;
+    }
   }
 
   > * {
