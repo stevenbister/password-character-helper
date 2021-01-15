@@ -6,6 +6,7 @@
   "license": "MIT",
   "devDependencies": {
     "cssnano": "^4.1.10",
+    "cypress": "^6.2.1",
     "eslint": "^7.17.0",
     "parcel-bundler": "^1.12.4",
     "prettier": "^2.2.1",
@@ -25,6 +26,7 @@
     "build": "parcel build index.html --public-url ./",
     "format": "npx prettier --write \"src/**/*.{js, scss}\"",
     "lint:js": "npx eslint \"src/js/**/*.js\"; exit 0",
-    "lint:scss": "stylelint \"src/scss/**/*.scss\"; exit 0"
+    "lint:scss": "stylelint \"src/scss/**/*.scss\"; exit 0",
+    "test": "cypress open"
   }
 }
