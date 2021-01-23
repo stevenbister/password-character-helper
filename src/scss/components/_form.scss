@@ -29,15 +29,21 @@ input[type='password'] {
 
 // Custom checkboxes
 .checkbox {
+  --target-size: #{rem-calc(44)};
+  --checkbox-font: 1.3rem;
+
   display: grid;
+  min-width: var(--target-size);
+  min-height: var(--target-size);
   padding: rem-calc(3) 0;
   margin: rem-calc(3);
   background: var(--primary-input-color);
   border-radius: var(--input-radius);
+  font-size: var(--checkbox-font);
   grid-template-areas: 'checkbox';
-  @include grid-rows(1);
-
+  place-items: center;
   transition: all 0.2s ease-in-out;
+  @include grid-rows(1);
 
   &:hover,
   &:focus,
@@ -65,5 +71,11 @@ input[type='password'] {
     width: 1em;
     height: 1em;
     opacity: 0;
+  }
+}
+@media (min-width: 768px) {
+  .checkbox {
+    --target-size: #{rem-calc(30)};
+    --checkbox-font: 1rem;
   }
 }
