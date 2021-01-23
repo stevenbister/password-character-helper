@@ -39,25 +39,16 @@ input[type='password'] {
   margin: rem-calc(3);
   background: var(--primary-input-color);
   border-radius: var(--input-radius);
+  cursor: pointer;
   font-size: var(--checkbox-font);
   grid-template-areas: 'checkbox';
   place-items: center;
   transition: all 0.2s ease-in-out;
   @include grid-rows(1);
 
-  &:hover,
-  &:focus,
   &.checked {
     background: var(--primary-input-color-dark);
     color: var(--primary-input-color);
-  }
-
-  &.checked {
-    &:hover,
-    &:focus {
-      background: var(--primary-input-color);
-      color: initial;
-    }
   }
 
   > * {
@@ -77,5 +68,11 @@ input[type='password'] {
   .checkbox {
     --target-size: #{rem-calc(30)};
     --checkbox-font: 1rem;
+
+    &:hover,
+    &:focus {
+      background: var(--primary-input-color-dark);
+      color: var(--primary-input-color);
+    }
   }
 }
