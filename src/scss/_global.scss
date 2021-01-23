@@ -9,12 +9,13 @@
 }
 
 body {
-  align-items: center;
-  justify-content: center;
-  @include flex-column;
   @include font-family($name: 'Roboto');
 }
 
 main {
   max-width: 100%;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  @include flex-column;
 }
