@@ -1,6 +1,7 @@
 import pushInputTextToArray from './utils/arrayHandlers';
 import clearElement from './utils/clearElement';
 import { createCheckbox, createCharacterContainer } from './createElements';
+import toggleColorMode from './toggleColorMode';
 
 // Init array to store the password's characters
 let characters = [];
@@ -66,3 +67,8 @@ document.addEventListener('change', (e) => {
     return showCharacters();
   }
 });
+
+// Dark mode toggle
+const toggle = document.querySelector('[data-color-toggle]');
+
+toggleColorMode(toggle);
