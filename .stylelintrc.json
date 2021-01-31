@@ -7,7 +7,13 @@
   "plugins": ["stylelint-scss", "stylelint-prettier"],
   "rules": {
     "color-hex-case": "lower",
-    "at-rule-empty-line-before": "never",
+    "at-rule-empty-line-before": [
+      "always",
+      {
+        "except": ["inside-block", "blockless-after-same-name-blockless"],
+        "ignore": ["after-comment"]
+      }
+    ],
     "block-closing-brace-newline-after": [
       "always",
       {

@@ -7,27 +7,36 @@
     <title>Password Checker</title>
   </head>
   <body>
-    <main id="app" class="container stack text--center">
-      <div id="output" class="output"></div>
-      <form id="characterPicker" class="form stack">
-        <input
-          type="password"
-          name="Password"
-          id="passwordContainer"
-          class="text--center"
-        />
-        <div
-          id="fieldset"
-          class="fieldset__checkboxes"
-          role="group"
-          aria-labelledby="legend"
-        >
-          <div id="legend" class="legend">
-            Select which chatacters you want to show
+    <main id="app">
+      <header class="header">
+        <button
+          class="color-switcher"
+          aria-label="Activate dark mode"
+          data-color-toggle="dark"
+        ></button>
+      </header>
+      <div class="container stack text--center">
+        <div id="output" class="output"></div>
+        <form id="characterPicker" class="form stack">
+          <input
+            type="password"
+            name="Password"
+            id="passwordContainer"
+            class="text--center"
+          />
+          <div
+            id="fieldset"
+            class="fieldset__checkboxes"
+            role="group"
+            aria-labelledby="legend"
+          >
+            <div id="legend" class="legend">
+              Select which chatacters you want to show
+            </div>
+            <div class="checkboxes checkboxes--center"></div>
           </div>
-          <div class="checkboxes checkboxes--center"></div>
-        </div>
-      </form>
+        </form>
+      </div>
     </main>
 
     <script src="./src/js/App.js"></script>

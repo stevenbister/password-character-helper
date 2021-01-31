@@ -6,15 +6,50 @@
 :root {
   --primary-input-color: #e5e5e5;
   --primary-input-color-dark: #333;
+  --bg-color: #fff;
+  --text-color: #333;
+}
+
+:focus {
+  outline: 2px solid var(--text-color, currentColor);
+  outline-offset: 0.2rem;
+}
+
+html {
+  background: var(--bg-color);
+  color: var(--text-color);
+}
+
+.dark {
+  --primary-input-color: #6b6b6b;
+  --primary-input-color-dark: #e5e5e5;
+  --bg-color: #333;
+  --text-color: #fff;
 }
 
 body {
-  align-items: center;
-  justify-content: center;
-  @include flex-column;
   @include font-family($name: 'Roboto');
 }
 
 main {
   max-width: 100%;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  @include flex-column;
+
+  // Pushes the header up to the top while keeping the input central
+  > * {
+    margin-bottom: auto;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary-input-color: #6b6b6b;
+    --primary-input-color-dark: #e5e5e5;
+    --bg-color: #333;
+    --text-color: #fff;
+  }
 }
