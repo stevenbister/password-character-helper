@@ -10,6 +10,11 @@
   --text-color: #333;
 }
 
+:focus {
+  outline: 2px solid var(--text-color, currentColor);
+  outline-offset: 0.2rem;
+}
+
 html {
   background: var(--bg-color);
   color: var(--text-color);
@@ -31,8 +36,15 @@ main {
   height: 100vh;
   align-items: center;
   justify-content: center;
+  padding: 2rem;
   @include flex-column;
+
+  // Pushes the header up to the top while keeping the input central
+  > * {
+    margin-bottom: auto;
+  }
 }
+
 @media (prefers-color-scheme: dark) {
   :root {
     --primary-input-color: #6b6b6b;

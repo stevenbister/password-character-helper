@@ -49,6 +49,10 @@ input[type='password'] {
   &.checked {
     background: var(--primary-input-color-dark);
     color: var(--primary-input-color);
+
+    input:focus + span {
+      outline: 2px solid var(--primary-input-color, currentColor);
+    }
   }
 
   > * {
@@ -63,7 +67,12 @@ input[type='password'] {
     height: 1em;
     opacity: 0;
   }
+
+  input:focus + span {
+    outline: 2px solid var(--text-color, currentColor);
+  }
 }
+
 @media (min-width: 768px) {
   .checkbox {
     --target-size: #{rem-calc(30)};
