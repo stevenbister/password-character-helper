@@ -6,6 +6,20 @@
 :root {
   --primary-input-color: #e5e5e5;
   --primary-input-color-dark: #333;
+  --bg-color: #fff;
+  --text-color: #333;
+}
+
+html {
+  background: var(--bg-color);
+  color: var(--text-color);
+}
+
+.dark {
+  --primary-input-color: #6b6b6b;
+  --primary-input-color-dark: #e5e5e5;
+  --bg-color: #333;
+  --text-color: #fff;
 }
 
 body {
@@ -18,4 +32,12 @@ main {
   align-items: center;
   justify-content: center;
   @include flex-column;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary-input-color: #6b6b6b;
+    --primary-input-color-dark: #e5e5e5;
+    --bg-color: #333;
+    --text-color: #fff;
+  }
 }
