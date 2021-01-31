@@ -1,4 +1,5 @@
 import { sun, moon } from './icons';
+// TODO: Write tests
 
 /**
  * Lightweight dark mode toggle
@@ -6,24 +7,43 @@ import { sun, moon } from './icons';
  * @param {Element} element
  */
 
-function toggleColorMode(element) {
+function toggleColorMode(element, colorMode) {
   if (!element) return;
 
   const html = document.documentElement;
 
   // Initial vals for click event
-  let mode = 'light';
-  let icon = moon;
+  let mode = colorMode || 'light';
+  let icon = sun;
 
-  element.addEventListener('click', () => {
-    html.classList.toggle('dark');
-    element.setAttribute('aria-label', `Activate ${mode} mode`);
-    element.dataset.colorToggle = mode;
+  html.classList.add(mode);
+
+  const setIcon = () => {
+    mode == 'light' ? (icon = sun) : (icon = moon);
     element.innerHTML = icon;
+  };
+  setIcon();
 
-    html.classList.contains('dark') ? (mode = 'dark') : (mode = 'light');
+  // Register the click event
+  element.addEventListener('click', () => {
+    // Set the mode
+    mode == 'light' ? (mode = 'dark') : (mode = 'light');
 
-    mode == 'dark' ? (icon = sun) : (icon = moon);
+    // Updated localstorage
+    localStorage.setItem('preferredColorMode', mode);
+
+    // Update the aria and data attributes
+    element.dataset.colorToggle = mode == 'light' ? 'dark' : 'light';
+    element.setAttribute(
+      'aria-label',
+      `Activate ${mode == 'light' ? 'dark' : 'light'} mode`
+    );
+
+    // Add class to the html
+    html.classList.toggle('dark');
+
+    // Update the button's icon
+    setIcon();
   });
 }
 

@@ -70,5 +70,7 @@ document.addEventListener('change', (e) => {
 
 // Dark mode toggle
 const toggle = document.querySelector('[data-color-toggle]');
+// Get default color mode and pass to state
+const preferredColorMode = localStorage.getItem('preferredColorMode');
 
-toggleColorMode(toggle);
+toggleColorMode(toggle, preferredColorMode);
